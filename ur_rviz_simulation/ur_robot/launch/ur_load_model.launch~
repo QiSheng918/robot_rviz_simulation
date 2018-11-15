@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<launch>
+
+ 
+  <arg name="default-starting-config"     default="1"/>
+  <arg name="model" 	  	  default="$(find ur_robot)/urdf/ur10_robot.urdf.xacro"/>
+  <param name="robot_description"         command="$(find xacro)/xacro.py  $(arg model)" />  
+
+  <param name="/use_sim_time"           value="false"/>
+
+<!--  <node name="rviz" pkg="rviz" type="rviz"   required="true" />-->
+
+
+<!--  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="log" />-->
+  
+<!--  <node name="joint_state_publisher" type="joint_state_publisher" pkg="joint_state_publisher" output="screen">     -->
+      
+<!--        <rosparam param="source_list">[/KUKA/joint_states]</rosparam>-->
+<!--        <rosparam param="rate">500</rosparam>-->
+<!--   </node>-->
+</launch>
+
+

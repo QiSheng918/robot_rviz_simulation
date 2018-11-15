@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<launch>
+
+  <!-- PR2 Loopback Controllers Controllers -->
+  <include file="$(find ur_robot)/launch/ur_loopback_sim_controllers.launch"/>
+  
+  <!-- IAI Velocity Controllers -->
+  <include file="$(find ur_robot)/launch/ur_sim_vel_controllers.launch"/>
+  
+  <!-- IAI Position Controllers -->
+  <include file="$(find ur_robot)/launch/ur_sim_pos_controllers.launch"/>
+
+ 
+</launch>

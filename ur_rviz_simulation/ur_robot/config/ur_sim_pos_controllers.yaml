@@ -1,0 +1,13 @@
+arm_state_separator:
+  joint_names:
+    - shoulder_pan_joint
+    - shoulder_lift_joint
+    - elbow_joint
+    - wrist_1_joint
+    - wrist_2_joint
+    - wrist_3_joint
+arm_pos_controller: &controller_params
+  vel_command_type: MultiJointVelocityImpedanceCommand
+  max_speed: 1.9
+  p_gain: 10
+  stiffness: 200

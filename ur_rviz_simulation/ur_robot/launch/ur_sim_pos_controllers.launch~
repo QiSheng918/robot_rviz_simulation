@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<launch>
+  <rosparam command="load" 
+    file="$(find ur_robot)/config/ur_sim_pos_controllers.yaml"/>
+
+  <node name="arm_state_separator" pkg="iai_control_utils" type="separate_joint_states.py" args="" output="screen">
+    <remap from="~in_joint_states" to="/joint_states"/>
+    <remap from="~out_joint_states" to="/arm_pos_controller/joint_states"/>
+  </node>
+
+  <node name="arm_pos_controller" pkg="iai_control_utils" type="joint_p_ctrl.py" args="" output="screen">
+    <remap from="~pos_command_in" to="~command"/>
+    <remap from="~vel_command_out" to="/arm_vel/command"/>
+  </node>
+  
+</launch>

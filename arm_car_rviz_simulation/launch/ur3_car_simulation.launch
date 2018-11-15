@@ -1,0 +1,8 @@
+<launch>         
+    <arg name="model" default="$(find arm_car_rviz_simulation)/urdf/ur3_car.urdf.xacro"/>  
+ 
+    <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)"/>
+
+    <include file="$(find arm_car_rviz_simulation)/launch/ur_load.launch"/>
+    <include file="$(find arm_car_rviz_simulation)/launch/mobile_robot.launch"/>
+</launch>

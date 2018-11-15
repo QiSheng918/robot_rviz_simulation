@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<launch>
+
+  <!-- Set Robot model/rviz configuration path-->
+  <!-- Load KUKA Realtime visualization -->
+
+  
+
+  <arg name="model"  default="$(find ur_robot)/urdf/ur10_joint_limited_robot.urdf.xacro"/>
+
+
+  <include file="$(find ur_robot)/launch/ur_load_model.launch">
+     <arg name="model"  value="$(arg model)"/>
+  </include>
+
+  <!-- PR2 Loopback Controllers Controllers -->
+  <include file="$(find ur_robot)/launch/ur_loopback_sim_controllers.launch"/>
+  
+  <!-- IAI Velocity Controllers -->
+  <include file="$(find ur_robot)/launch/ur_sim_vel_controllers.launch"/>
+  
+  <!-- IAI Position Controllers -->
+  <include file="$(find ur_robot)/launch/ur_sim_pos_controllers.launch"/>
+
+  <!-- Load LASA to IAI joint state parser -->
+<!--  <node name="lasa_to_iai_parser" pkg="lasa_to_iai_parser" type="lasa_to_iai.py" output="screen"/>-->
+  
+</launch>

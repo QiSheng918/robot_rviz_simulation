@@ -1,0 +1,27 @@
+<launch>         
+    <arg name="gui" default="false"/>
+
+    <param name="use_gui" value="$(arg gui)"/>
+
+
+    <node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen">  
+        <rosparam file="$(find mobile_robot_rviz_sim)/config/config.yaml" command="load" />  
+        <param name="sim" value="true"/>  
+    </node>  
+
+
+   <node name="my_joint_state_publisher" pkg="arm_car_rviz_simulation" type="joint_state_publisher.py"
+
+
+/>  
+
+   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">  
+            <param name="publish_frequency" type="double" value="20.0" />  
+    </node>  
+
+         <!-- We need a static transforms for the wheels -->  
+    <node pkg="tf" type="static_transform_publisher" name="odom_left_wheel_broadcaster" args="0 0 0 0 0 0 /base_link /left_front_link 100"/>  
+    <node pkg="tf" type="static_transform_publisher" name="odom_right_wheel_broadcaster" args="0 0 0 0 0 0 /base_link /right_front_link 100"/>  
+
+    <node name="rviz" pkg="rviz" type="rviz"  required="true" />
+</launch>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>  
+<robot xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"   
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"   
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"   
+       xmlns:xacro="http://ros.org/wiki/xacro"   
+       name="mobile_robot_gazebo">  
+
+    <xacro:macro name="mobile_robot_sim">  
+      <gazebo reference="base_link">  
+            <material>Gazebo/Blue</material>  
+      </gazebo>  
+
+      <gazebo reference="right_front_wheel">  
+           <material>Gazebo/FlatBlack</material>  
+      </gazebo>  
+
+     <gazebo reference="right_back_wheel">  
+           <material>Gazebo/FlatBlack</material>  
+     </gazebo>  
+
+      <gazebo reference="left_front_wheel">  
+            <material>Gazebo/FlatBlack</material>  
+      </gazebo>  
+
+        <gazebo reference="left_back_wheel">  
+            <material>Gazebo/FlatBlack</material>  
+        </gazebo>  
+
+        <gazebo reference="head">  
+            <material>Gazebo/White</material>  
+        </gazebo>  
+   </xacro:macro>  
+</robot>

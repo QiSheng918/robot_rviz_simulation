@@ -1,0 +1,26 @@
+<launch>         
+    <arg name="model" default="$(find mobile_robot_rviz_sim)/urdf/mobile_robot.urdf.xacro"/>  
+    <arg name="gui" default="false" />  
+    <arg name="rvizconfig" default="$(find mobile_robot_rviz_sim)/rviz/default.rviz" />
+    <param name="use_gui" value="$(arg gui)"/>  
+    <param name="/use_sim_time" value="false" />  
+  
+    <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)"/>
+
+    <node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen">  
+        <rosparam file="$(find mobile_robot_rviz_sim)/config/config.yaml" command="load" />  
+        <param name="sim" value="true"/>  
+    </node>  
+   
+   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>  
+
+   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">  
+            <param name="publish_frequency" type="double" value="20.0" />  
+    </node>  
+
+         <!-- We need a static transforms for the wheels -->  
+    <node pkg="tf" type="static_transform_publisher" name="odom_left_wheel_broadcaster" args="0 0 0 0 0 0 /base_link /left_front_link 100"/>  
+    <node pkg="tf" type="static_transform_publisher" name="odom_right_wheel_broadcaster" args="0 0 0 0 0 0 /base_link /right_front_link 100"/>  
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+</launch>
