@@ -21,7 +21,7 @@
   <joint name="world_joint" type="fixed">
     <parent link="head" />
     <child link = "ur_base_link" />
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 3.1415926" />
   </joint>
       
 </robot>
