@@ -23,7 +23,7 @@ $ roslaunch arm_car_rviz_simulation ur10_car_simulation.launch
 To test the simulation, you can manually move the UR robot in **velocity control mode** like so:
 
 ```
-$ rostopic pub -r 10 /arm_vel/command iai_control_msgs/MultiJointVelocityImpedanceCommand '{velocity:[1,0,0,0,0,0]}'
+$ rostopic pub -r 20 /arm_vel/command iai_control_msgs/MultiJointVelocityImpedanceCommand '{velocity:[1,0,0,0,0,0]}'
 ```
 
 Here you are commanding the first joint with a velocity of 1rad/s
@@ -31,7 +31,7 @@ Here you are commanding the first joint with a velocity of 1rad/s
 To test the UR robot simulation in **position control mode** do the following:
 
 ```
-$ rostopic pub -r 10 /arm_pos_controller/command std_msgs/Float32MultiArray '{data:[0,1.57,0,0,0,0]}'
+$ rostopic pub -r 20 /arm_pos_controller/command std_msgs/Float32MultiArray '{data:[0,1.57,0,0,0,0]}'
 ```
 Position values per joint are in [rad].
 
